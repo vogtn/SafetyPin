@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import SignUpForm from '../components/SignUpForm.jsx';
 
 class SignUpPage extends React.Component {
+    
     constructor(props){
         super(props);
 
@@ -27,4 +28,24 @@ class SignUpPage extends React.Component {
             user
         });
     }
+    processForm(event){ 
+        event.preventDefault();
+
+        console.log('name: ', this.state.user.name);
+        console.log('email: ', this.state.user.email);
+        console.log('password: ', this.state.user.password);
+    }
+
+    render(){
+        return(
+            <SignUpForm
+                onSubmit={this.processForm}
+                onChange={this.changeUser}
+                errors={this.state.errors}
+                user={this.state.user}
+            />
+        );
+    }
 }
+
+export default SignUpPage;
