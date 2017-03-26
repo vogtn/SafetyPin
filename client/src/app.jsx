@@ -6,7 +6,6 @@ import SignUpForm from './components/SignUpForm.jsx';
 const App = () => (
     <div>
         <HomePage />
-
      </div>
 );
 
