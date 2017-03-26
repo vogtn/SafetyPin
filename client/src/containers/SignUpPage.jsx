@@ -17,4 +17,14 @@ class SignUpPage extends React.Component {
         this.processForm = this.processForm.bind(this);
         this.changeUser = this.changeUser.bind(this);
     }
+
+    changeUser(event) {
+        const field = event.target.name;
+        const user = this.state.user;
+        user[field] = event.target.value;
+
+        this.setState({
+            user
+        });
+    }
 }
