@@ -1,4 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import HomePage from './components/HomePage.jsx';
+import SignUpForm from './components/SignUpForm.jsx';
 
-ReactDom.render(<h1>Hello world</h1>, document.getElementById('App'));
+const App = () => (
+    <div>
+        <HomePage />
+
+     </div>
+);
+
+ReactDom.render(<App />, document.getElementById('App'));
