@@ -14,7 +14,7 @@ class SignUpPage extends React.Component {
                 password: ''
             }
         };
-
+        
         this.processForm = this.processForm.bind(this);
         this.changeUser = this.changeUser.bind(this);
     }
