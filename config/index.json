@@ -1,0 +1,4 @@
+{
+    "dbUri": "mongodb://localhost/safetypin",
+    "jwtSecret": "mark is a secret" 
+}
