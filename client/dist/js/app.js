@@ -16060,7 +16060,7 @@ exports.default = SignUpForm;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -16082,58 +16082,97 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var LoginPage = function (_React$Component) {
-    _inherits(LoginPage, _React$Component);
+  _inherits(LoginPage, _React$Component);
 
-    function LoginPage(props) {
-        _classCallCheck(this, LoginPage);
+  function LoginPage(props) {
+    _classCallCheck(this, LoginPage);
 
-        var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
 
-        _this.state = {
-            errors: {},
-            user: {
-                email: '',
-                password: ''
-            }
-        };
+    _this.state = {
+      errors: {},
+      user: {
+        email: '',
+        password: ''
+      }
+    };
 
-        _this.processForm = _this.processForm.bind(_this);
-        _this.changeUser = _this.changeUser.bind(_this);
-        return _this;
+    _this.processForm = _this.processForm.bind(_this);
+    _this.changeUser = _this.changeUser.bind(_this);
+    return _this;
+  }
+
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+
+
+  _createClass(LoginPage, [{
+    key: 'processForm',
+    value: function processForm(event) {
+      var _this2 = this;
+
+      event.preventDefault();
+
+      var email = encodeURIComponent(this.state.user.email);
+      var password = encodeURIComponent(this.state.user.password);
+      var formData = 'email=' + email + '&password=' + password;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', '/auth/login');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', function () {
+        if (xhr.status === 200) {
+          _this2.setState({
+            errors: {}
+          });
+
+          console.log('The form is valid');
+        } else {
+          var errors = xhr.response.errors ? xhr.response.errors : {};
+          errors.summary = xhr.response.message;
+
+          _this2.setState({
+            errors: errors
+          });
+        }
+      });
+      xhr.send(formData);
     }
 
-    _createClass(LoginPage, [{
-        key: 'processForm',
-        value: function processForm(event) {
-            event.preventDefault();
+    /**
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
 
-            console('email:', this.state.event.email);
-            console.log('password:', this.state.user.password);
-        }
-    }, {
-        key: 'changeUser',
-        value: function changeUser(event) {
-            var field = event.target.name;
-            var user = this.state.user;
-            user[field] = event.target.value;
+  }, {
+    key: 'changeUser',
+    value: function changeUser(event) {
+      var field = event.target.name;
+      var user = this.state.user;
+      user[field] = event.target.value;
 
-            this.setState({
-                user: user
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(_LoginForm2.default, {
-                onSubtmit: this.processForm,
-                onChange: this.changeUser,
-                errors: this.state.errors,
-                user: this.state.user
-            });
-        }
-    }]);
+      this.setState({
+        user: user
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_LoginForm2.default, {
+        onSubmit: this.processForm,
+        onChange: this.changeUser,
+        errors: this.state.errors,
+        user: this.state.user
+      });
+    }
+  }]);
 
-    return LoginPage;
+  return LoginPage;
 }(_react2.default.Component);
 
 exports.default = LoginPage;
@@ -16146,7 +16185,7 @@ exports.default = LoginPage;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -16168,60 +16207,105 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var SignUpPage = function (_React$Component) {
-    _inherits(SignUpPage, _React$Component);
+  _inherits(SignUpPage, _React$Component);
 
-    function SignUpPage(props) {
-        _classCallCheck(this, SignUpPage);
+  /**
+   * Class constructor.
+   */
+  function SignUpPage(props) {
+    _classCallCheck(this, SignUpPage);
 
-        var _this = _possibleConstructorReturn(this, (SignUpPage.__proto__ || Object.getPrototypeOf(SignUpPage)).call(this, props));
+    // set the initial component state
+    var _this = _possibleConstructorReturn(this, (SignUpPage.__proto__ || Object.getPrototypeOf(SignUpPage)).call(this, props));
 
-        _this.state = {
-            errors: {},
-            user: {
-                email: '',
-                name: '',
-                password: ''
-            }
-        };
+    _this.state = {
+      errors: {},
+      user: {
+        email: '',
+        name: '',
+        password: ''
+      }
+    };
 
-        _this.processForm = _this.processForm.bind(_this);
-        _this.changeUser = _this.changeUser.bind(_this);
-        return _this;
+    _this.processForm = _this.processForm.bind(_this);
+    _this.changeUser = _this.changeUser.bind(_this);
+    return _this;
+  }
+
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+
+
+  _createClass(SignUpPage, [{
+    key: 'changeUser',
+    value: function changeUser(event) {
+      var field = event.target.name;
+      var user = this.state.user;
+      user[field] = event.target.value;
+
+      this.setState({
+        user: user
+      });
     }
 
-    _createClass(SignUpPage, [{
-        key: 'changeUser',
-        value: function changeUser(event) {
-            var field = event.target.name;
-            var user = this.state.user;
-            user[field] = event.target.value;
+    /**
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
 
-            this.setState({
-                user: user
-            });
-        }
-    }, {
-        key: 'processForm',
-        value: function processForm(event) {
-            event.preventDefault();
+  }, {
+    key: 'processForm',
+    value: function processForm(event) {
+      var _this2 = this;
 
-            console.log('name: ', this.state.user.name);
-            console.log('email: ', this.state.user.email);
-            console.log('password: ', this.state.user.password);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(_SignUpForm2.default, {
-                onSubmit: this.processForm,
-                onChange: this.changeUser,
-                errors: this.state.errors,
-                user: this.state.user
-            });
-        }
-    }]);
+      // prevent default action. in this case, action is the form submission event
+      event.preventDefault();
 
-    return SignUpPage;
+      var name = encodeURIComponent(this.state.user.name);
+      var email = encodeURIComponent(this.state.user.email);
+      var password = encodeURIComponent(this.state.user.password);
+      var formData = 'name=' + name + '&email=' + email + '&password=' + password;
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('post', '/auth/signup');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', function () {
+        if (xhr.status === 200) {
+          _this2.setState({
+            errors: {}
+          });
+
+          console.log('The form is valid');
+        } else {
+
+          var errors = xhr.response.errors ? xhr.response.errors : {};
+          errors.summary = xhr.response.message;
+
+          _this2.setState({
+            errors: errors
+          });
+        }
+      });
+      xhr.send(formData);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_SignUpForm2.default, {
+        onSubmit: this.processForm,
+        onChange: this.changeUser,
+        errors: this.state.errors,
+        user: this.state.user
+      });
+    }
+  }]);
+
+  return SignUpPage;
 }(_react2.default.Component);
 
 exports.default = SignUpPage;
