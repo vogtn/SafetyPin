@@ -4,8 +4,12 @@ import SignUpForm from '../components/SignUpForm.jsx';
 
 class SignUpPage extends React.Component {
 
+  /**
+   * Class constructor.
+   */
   constructor(props, context) {
     super(props, context);
+
     this.state = {
       errors: {},
       user: {
@@ -19,6 +23,11 @@ class SignUpPage extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
   processForm(event) {
     event.preventDefault();
 
@@ -37,14 +46,9 @@ class SignUpPage extends React.Component {
           errors: {}
         });
 
-        // set a message
         localStorage.setItem('successMessage', xhr.response.message);
-
-        // make a redirect
         this.context.router.replace('/login');
       } else {
-        // failure
-
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
 
@@ -56,6 +60,11 @@ class SignUpPage extends React.Component {
     xhr.send(formData);
   }
 
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
   changeUser(event) {
     const field = event.target.name;
     const user = this.state.user;

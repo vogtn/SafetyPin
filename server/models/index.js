@@ -7,7 +7,5 @@ module.exports.connect = (uri) => {
     console.error(`Mongoose connection error: ${err}`);
     process.exit(1);
   });
-
-  // load models
   require('./user');
 };

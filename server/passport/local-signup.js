@@ -1,4 +1,4 @@
-const User = require('mongoose');
+const User = require('mongoose').model('User');
 const PassportLocalStrategy = require('passport-local').Strategy;
 
 module.exports = new PassportLocalStrategy({
