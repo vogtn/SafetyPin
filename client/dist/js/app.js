@@ -15850,7 +15850,7 @@ var Base = function Base(_ref) {
       { className: 'top-bar' },
       _react2.default.createElement(
         'div',
-        { className: 'top-bar-left' },
+        { className: 'top-bar-left logout' },
         _react2.default.createElement(
           _reactRouter.IndexLink,
           { to: '/' },
@@ -15859,7 +15859,7 @@ var Base = function Base(_ref) {
       ),
       _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(
         'div',
-        { className: 'top-bar-right' },
+        { className: 'top-bar-right logout' },
         _react2.default.createElement(
           _reactRouter.Link,
           { to: '/logout' },

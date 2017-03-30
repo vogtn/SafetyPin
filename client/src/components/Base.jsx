@@ -6,12 +6,12 @@ import Auth from '../modules/Auth';
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-      <div className="top-bar-left">
+      <div className="top-bar-left logout">
         <IndexLink to="/">React App</IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right">
+        <div className="top-bar-right logout">
           <Link to="/logout">Log out</Link>
         </div>
       ) : (
