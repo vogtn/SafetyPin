@@ -1,3 +1,16 @@
 .logout{
     background-color: red;
 }
+.top-bar-right {
+  width: 40% !important;
+  display: inline-block !important;
+  margin: 0 auto !important;
+}
+.top-bar-left {
+  width: 40% !important;
+  display: inline-block !important;
+  margin: 0 auto !important;
+}
+.link {
+  border: 1px solid black;
+}
