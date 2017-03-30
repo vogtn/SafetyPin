@@ -1,25 +1,28 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
+import FlatButton from 'material-ui/FlatButton';
 
 
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-      <div className="top-bar-left logout">
-        <IndexLink to="/">React App</IndexLink>
-      </div>
-
       {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right logout">
-          <Link to="/logout">Log out</Link>
+        <div className="top-bar-right">
+          <Link to="/logout"><FlatButton label='Log Out'/></Link>
         </div>
       ) : (
         <div className="top-bar-right">
-          <Link to="/login">Log in</Link>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/login"><FlatButton label='Log in'/></Link>
+          <Link to="/signup"><FlatButton label='Sign up'/></Link>
         </div>
       )}
+      <div className="top-bar-left">
+        <IndexLink to="/">
+          <FlatButton label='Safety Pin'/>
+        </IndexLink>
+      </div>
+
 
     </div>
     {children}
