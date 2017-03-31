@@ -1,9 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
+import Map from 'google-maps-react'
 
 
 const Dashboard = ({ secretData }) => (
+
   <Card className="container">
+
+
+
+  
     <CardTitle
       title="Dashboard"
       subtitle="You should get access to this page only after authentication."
@@ -11,6 +17,7 @@ const Dashboard = ({ secretData }) => (
 
     {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>{secretData}</CardText>}
   </Card>
+
 );
 
 Dashboard.propTypes = {

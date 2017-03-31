@@ -20,17 +20,15 @@ const Base = ({ children }) => (
             <Link to="/signup"><FlatButton label='Sign up'/></Link>
           </div>
         )}
-        <div className="brand-logo center ">
+        <div className="brand-logo center">
           <IndexLink to="/">
             <FlatButton className='pulse' labelStyle={{ fontSize: '30px' }} label='Safety Pin' secondary={true}/>
-          </IndexLink>
           <FontAwesome
-            className='super-crazy-colors'
-            name='rocket'
-            size='4x'
-            spin
-            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+            className='pin'
+            name='map-pin'
+            size='2x'
           />
+          </IndexLink>
         </div>
         <div>
         </div>
