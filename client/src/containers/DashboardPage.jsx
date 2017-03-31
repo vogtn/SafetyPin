@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
-import Map from '../components/Map.jsx'
+import Map from '../components/Map.jsx';
 
 
 class DashboardPage extends React.Component {

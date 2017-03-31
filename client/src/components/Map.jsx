@@ -3,6 +3,8 @@ import React, {PropTypes} from 'react';
 import GoogleMap from 'react-google-map';
 import GoogleMapLoader from 'react-google-maps-loader';
 
+
+
 const MY_API_KEY = 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo';
 
 const Map = ({googleMaps}) => (
@@ -11,10 +13,10 @@ const Map = ({googleMaps}) => (
       googleMaps={googleMaps}
       coordinates={[
         {
-          title: "Toulouse",
+          title: "Seattle",
           position: {
-            lat: 43.604363,
-            lng: 1.443363,
+            lat: 47.608013,
+            lng:  -122.335167,
           },
           onLoaded: (googleMaps, map, marker) => {
             // Set Marker animation
@@ -24,7 +26,7 @@ const Map = ({googleMaps}) => (
             const infoWindow = new googleMaps.InfoWindow({
               content: `
                 <div>
-                  <h3>Toulouse<h3>
+                  <h3>Seattle<h3>
                   <div>
                     Toulouse is the capital city of the southwestern
                     French department of Haute-Garonne,
@@ -53,8 +55,8 @@ const Map = ({googleMaps}) => (
           },
         }
       ]}
-      center={{lat: 43.604363, lng: 1.443363}}
-      zoom={13}
+      center={{lat: 47.608013, lng: -122.335167}}
+      zoom={14}
       onLoaded={(googleMaps, map) => {
         map.setMapTypeId(googleMaps.MapTypeId.SATELLITE)
       }}
