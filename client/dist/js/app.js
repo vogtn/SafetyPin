@@ -49479,10 +49479,10 @@ var Map = function Map(_ref) {
     _react2.default.createElement(_reactGoogleMap2.default, {
       googleMaps: googleMaps,
       coordinates: [{
-        title: "Toulouse",
+        title: "Seattle",
         position: {
-          lat: 43.604363,
-          lng: 1.443363
+          lat: 47.608013,
+          lng: -122.335167
         },
         onLoaded: function onLoaded(googleMaps, map, marker) {
           // Set Marker animation
@@ -49490,7 +49490,7 @@ var Map = function Map(_ref) {
 
           // Define Marker InfoWindow
           var infoWindow = new googleMaps.InfoWindow({
-            content: '\n                <div>\n                  <h3>Toulouse<h3>\n                  <div>\n                    Toulouse is the capital city of the southwestern\n                    French department of Haute-Garonne,\n                    as well as of the Occitanie region.\n                  </div>\n                </div>\n              '
+            content: '\n                <div>\n                  <h3>Seattle<h3>\n                  <div>\n                    Toulouse is the capital city of the southwestern\n                    French department of Haute-Garonne,\n                    as well as of the Occitanie region.\n                  </div>\n                </div>\n              '
           });
 
           // Open InfoWindow when Marker will be clicked
@@ -49511,8 +49511,8 @@ var Map = function Map(_ref) {
           infoWindow.open(map, marker);
         }
       }],
-      center: { lat: 43.604363, lng: 1.443363 },
-      zoom: 13,
+      center: { lat: 47.608013, lng: -122.335167 },
+      zoom: 14,
       onLoaded: function onLoaded(googleMaps, map) {
         map.setMapTypeId(googleMaps.MapTypeId.SATELLITE);
       }
