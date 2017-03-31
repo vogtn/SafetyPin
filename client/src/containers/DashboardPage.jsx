@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
+import Map from '../components/Map.jsx'
 
 
 class DashboardPage extends React.Component {
@@ -9,6 +10,7 @@ class DashboardPage extends React.Component {
 
     this.state = {
       secretData: ''
+
     };
   }
 
@@ -30,7 +32,12 @@ class DashboardPage extends React.Component {
   }
 
   render() {
-    return (<Dashboard secretData={this.state.secretData} />);
+    return (
+<div>
+      <Map />
+      <Dashboard secretData={this.state.secretData} />
+</div>
+    );
   }
 
 }

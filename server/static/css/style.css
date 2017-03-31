@@ -25,3 +25,22 @@
 	margin-top: 100px;
 	text-align: center;
 }
+
+
+.pin{
+	color: red;
+}
+
+
+
+/* Dashboard Page */
+
+.map {
+  height: 500px;
+}
+
+@media screen and (min-width: 1024px){
+    .map {
+        height: 500px;
+    }
+}
