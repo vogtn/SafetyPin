@@ -11,6 +11,7 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
+<div>
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
@@ -55,6 +56,9 @@ const SignUpForm = ({
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
     </form>
   </Card>
+
+
+</div>
 );
 
 SignUpForm.propTypes = {
