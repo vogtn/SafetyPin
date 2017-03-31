@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 import FlatButton from 'material-ui/FlatButton';
+import FontAwesome from 'react-fontawesome';
 
 
 const Base = ({ children }) => (
@@ -23,6 +24,15 @@ const Base = ({ children }) => (
           <IndexLink to="/">
             <FlatButton className='pulse' labelStyle={{ fontSize: '30px' }} label='Safety Pin' secondary={true}/>
           </IndexLink>
+          <FontAwesome
+            className='super-crazy-colors'
+            name='rocket'
+            size='4x'
+            spin
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+          />
+        </div>
+        <div>
         </div>
       </div>
     {children}
