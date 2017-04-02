@@ -44,3 +44,10 @@
         height: 500px;
     }
 }
+
+/* Dashboard page */
+
+#load {
+	margin-left: 50%;
+	margin-top: 20%;
+}
