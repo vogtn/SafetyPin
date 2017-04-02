@@ -97,9 +97,9 @@ const Map = ({googleMaps, secretData}) => (
         }
       ]}
       center={{lat: 47.608013, lng: -122.335167}}
-      zoom={12}
+      zoom={14}
       onLoaded={(googleMaps, map) => {
-        map.setMapTypeId(googleMaps.MapTypeId.ROADMAP)
+        map.setMapTypeId(googleMaps.MapTypeId.SATELLITE)
       }}
     />
   </div>
