@@ -7,107 +7,30 @@ import GoogleMapLoader from 'react-google-maps-loader';
 
 const MY_API_KEY = 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo';
 
-const Map = ({googleMaps, secretData}) => (
+const Map = ({googleMaps, secretData, userLng, userLat}) => (
 	<div className='map'>
-    {console.log(secretData[0])}
     <GoogleMap
       googleMaps={googleMaps}
       coordinates={[
-        {
-          title: secretData[0].offense_type,
-          position: {
-            lat: secretData[0].location.coordinates[1],
-            lng:  secretData[0].location.coordinates[0],
-          },
-          onLoaded: (googleMaps, map, marker) => {
-            // Set Marker animation
-            marker.setAnimation(googleMaps.Animation.BOUNCE)
-
-            // Define Marker InfoWindow
-            const infoWindow = new googleMaps.InfoWindow({
-              content: `
-                <div>
-                  <h3>`+ secretData[0].hundred_block_location +`<h3>
-                  <small>` +
-                    secretData[0].offense_type
-                    +
-                  `</small>
-                </div>
-              `,
-            })
-
-            // Open InfoWindow when Marker will be clicked
-            googleMaps.event.addListener(marker, "click", () => {
-              infoWindow.open(map, marker)
-            })
-
-            // Change icon when Marker will be hovered
-            googleMaps.event.addListener(marker, "mouseover", () => {
-              marker.setIcon(iconMarkerHover)
-            })
-
-            googleMaps.event.addListener(marker, "mouseout", () => {
-              marker.setIcon(iconMarker)
-            })
-
-            // Open InfoWindow directly
-            infoWindow.open(map, marker)
-          },
-        },
-        {
-          title: secretData[1].offense_type,
-          position: {
-            lat: secretData[1].location.coordinates[1],
-            lng:  secretData[1].location.coordinates[0],
-          },
-          onLoaded: (googleMaps, map, marker) => {
-            // Set Marker animation
-            marker.setAnimation(googleMaps.Animation.BOUNCE)
-
-            // Define Marker InfoWindow
-            const infoWindow = new googleMaps.InfoWindow({
-              content: `
-                <div>
-                  <h3>`+ secretData[0].hundred_block_location +`<h3>
-                  <small>` +
-                    secretData[0].offense_type
-                    +
-                  `</small>
-                </div>
-              `,
-            })
-
-            // Open InfoWindow when Marker will be clicked
-            googleMaps.event.addListener(marker, "click", () => {
-              infoWindow.open(map, marker)
-            })
-
-            // Change icon when Marker will be hovered
-            googleMaps.event.addListener(marker, "mouseover", () => {
-              marker.setIcon(iconMarkerHover)
-            })
-
-            googleMaps.event.addListener(marker, "mouseout", () => {
-              marker.setIcon(iconMarker)
-            })
-
-            // Open InfoWindow directly
-            infoWindow.open(map, marker)
-          },
-        }
+        secretData[1], secretData[2], secretData[3], secretData[4], secretData[5],
+        secretData[6], secretData[7], secretData[8], secretData[9], secretData[10],
+        secretData[11], secretData[12], secretData[13], secretData[14], secretData[15],
+        secretData[16], secretData[17], secretData[18], secretData[19], secretData[20],
+        secretData[21], secretData[22], secretData[23], secretData[24], secretData[25],
+        secretData[26], secretData[27], secretData[28], secretData[29], secretData[30],
+        secretData[31], secretData[32], secretData[33], secretData[34], secretData[35],
+        secretData[36], secretData[37], secretData[38], secretData[39], secretData[40],
+        secretData[41], secretData[42], secretData[43], secretData[44], secretData[45],
+        secretData[46], secretData[47], secretData[48], secretData[49], secretData[50],
       ]}
-      center={{lat: 47.608013, lng: -122.335167}}
+      center={{lat: userLat, lng: userLng}}
       zoom={14}
       onLoaded={(googleMaps, map) => {
-        map.setMapTypeId(googleMaps.MapTypeId.SATELLITE)
+        map.setMapTypeId(googleMaps.MapTypeId.ROADMAP)
       }}
     />
   </div>
 )
-
-Map.propTypes = {
-  googleMaps: PropTypes.object.isRequired,
-}
 
 export default GoogleMapLoader(Map, {
   libraries: ["places"],

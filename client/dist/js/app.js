@@ -17690,89 +17690,22 @@ var MY_API_KEY = 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo';
 
 var Map = function Map(_ref) {
   var googleMaps = _ref.googleMaps,
-      secretData = _ref.secretData;
+      secretData = _ref.secretData,
+      userLng = _ref.userLng,
+      userLat = _ref.userLat;
   return _react2.default.createElement(
     'div',
     { className: 'map' },
-    console.log(secretData[0]),
     _react2.default.createElement(_reactGoogleMap2.default, {
       googleMaps: googleMaps,
-      coordinates: [{
-        title: secretData[0].offense_type,
-        position: {
-          lat: secretData[0].location.coordinates[1],
-          lng: secretData[0].location.coordinates[0]
-        },
-        onLoaded: function onLoaded(googleMaps, map, marker) {
-          // Set Marker animation
-          marker.setAnimation(googleMaps.Animation.BOUNCE);
-
-          // Define Marker InfoWindow
-          var infoWindow = new googleMaps.InfoWindow({
-            content: '\n                <div>\n                  <h3>' + secretData[0].hundred_block_location + '<h3>\n                  <small>' + secretData[0].offense_type + '</small>\n                </div>\n              '
-          });
-
-          // Open InfoWindow when Marker will be clicked
-          googleMaps.event.addListener(marker, "click", function () {
-            infoWindow.open(map, marker);
-          });
-
-          // Change icon when Marker will be hovered
-          googleMaps.event.addListener(marker, "mouseover", function () {
-            marker.setIcon(iconMarkerHover);
-          });
-
-          googleMaps.event.addListener(marker, "mouseout", function () {
-            marker.setIcon(iconMarker);
-          });
-
-          // Open InfoWindow directly
-          infoWindow.open(map, marker);
-        }
-      }, {
-        title: secretData[1].offense_type,
-        position: {
-          lat: secretData[1].location.coordinates[1],
-          lng: secretData[1].location.coordinates[0]
-        },
-        onLoaded: function onLoaded(googleMaps, map, marker) {
-          // Set Marker animation
-          marker.setAnimation(googleMaps.Animation.BOUNCE);
-
-          // Define Marker InfoWindow
-          var infoWindow = new googleMaps.InfoWindow({
-            content: '\n                <div>\n                  <h3>' + secretData[0].hundred_block_location + '<h3>\n                  <small>' + secretData[0].offense_type + '</small>\n                </div>\n              '
-          });
-
-          // Open InfoWindow when Marker will be clicked
-          googleMaps.event.addListener(marker, "click", function () {
-            infoWindow.open(map, marker);
-          });
-
-          // Change icon when Marker will be hovered
-          googleMaps.event.addListener(marker, "mouseover", function () {
-            marker.setIcon(iconMarkerHover);
-          });
-
-          googleMaps.event.addListener(marker, "mouseout", function () {
-            marker.setIcon(iconMarker);
-          });
-
-          // Open InfoWindow directly
-          infoWindow.open(map, marker);
-        }
-      }],
-      center: { lat: 47.608013, lng: -122.335167 },
+      coordinates: [secretData[1], secretData[2], secretData[3], secretData[4], secretData[5], secretData[6], secretData[7], secretData[8], secretData[9], secretData[10], secretData[11], secretData[12], secretData[13], secretData[14], secretData[15], secretData[16], secretData[17], secretData[18], secretData[19], secretData[20], secretData[21], secretData[22], secretData[23], secretData[24], secretData[25], secretData[26], secretData[27], secretData[28], secretData[29], secretData[30], secretData[31], secretData[32], secretData[33], secretData[34], secretData[35], secretData[36], secretData[37], secretData[38], secretData[39], secretData[40], secretData[41], secretData[42], secretData[43], secretData[44], secretData[45], secretData[46], secretData[47], secretData[48], secretData[49], secretData[50]],
+      center: { lat: userLat, lng: userLng },
       zoom: 14,
       onLoaded: function onLoaded(googleMaps, map) {
-        map.setMapTypeId(googleMaps.MapTypeId.SATELLITE);
+        map.setMapTypeId(googleMaps.MapTypeId.ROADMAP);
       }
     })
   );
-};
-
-Map.propTypes = {
-  googleMaps: _react.PropTypes.object.isRequired
 };
 
 exports.default = (0, _reactGoogleMapsLoader2.default)(Map, {
@@ -17942,8 +17875,9 @@ var DashboardPage = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).call(this, props));
 
     _this.state = {
-      secretData: []
-
+      secretData: [],
+      userLat: 47.608013,
+      userLng: -122.335167
     };
     return _this;
   }
@@ -17952,6 +17886,13 @@ var DashboardPage = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
+
+      //redefine this scope to main component
+      var self = this;
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(findPosition);
+      }
 
       var xhr = new XMLHttpRequest();
       xhr.open('get', '/api/dashboard');
@@ -17962,12 +17903,49 @@ var DashboardPage = function (_React$Component) {
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.response.message);
+          var newData = data.map(function (element) {
+            return {
+              title: element.offense_type,
+              position: {
+                lat: element.location.coordinates[1],
+                lng: element.location.coordinates[0]
+              },
+              onLoaded: function onLoaded(googleMaps, map, marker) {
+                // Set Marker animation
+                marker.setAnimation(googleMaps.Animation.DROP);
+
+                // Define Marker InfoWindow
+                var infoWindow = new googleMaps.InfoWindow({
+                  content: '\n                      <div>\n                        <h3>' + element.hundred_block_location + '<h3>\n                        <small>' + element.offense_type + '</small>\n                      </div>\n                    '
+                });
+
+                // Open InfoWindow when Marker will be clicked
+                googleMaps.event.addListener(marker, "click", function () {
+                  infoWindow.open(map, marker);
+                });
+              }
+            };
+          });
+          console.log(newData);
           _this2.setState({
-            secretData: data
+            secretData: newData
           });
         }
       });
       xhr.send();
+
+      //define lat lng
+
+      function findPosition(position) {
+        if (position.coords.latitude) {
+          self.setState({
+            userLat: position.coords.latitude || this.state.userLat,
+            userLng: position.coords.longitude || this.state.longitude
+          });
+        }
+        // userLat: position.coords.latitude,
+        // userLng: position.coords.longitude
+      }
     }
   }, {
     key: 'render',
@@ -17980,8 +17958,7 @@ var DashboardPage = function (_React$Component) {
           'div',
           null,
           'loading...'
-        ) : _react2.default.createElement(_Map2.default, { secretData: this.state.secretData }),
-        _react2.default.createElement(_Dashboard2.default, { secretData: this.state.secretData })
+        ) : _react2.default.createElement(_Map2.default, { secretData: this.state.secretData, userLat: this.state.userLat, userLng: this.state.userLng })
       );
     }
   }]);
