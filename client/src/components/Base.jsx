@@ -31,6 +31,7 @@ const Base = ({ children }) => (
     {children}
     </nav>
   </div>
+  <div className="footer z-depth-5">© 2017 made with &hearts; from Nic, Mark, & Jack </div>
 </div>
 );
 
