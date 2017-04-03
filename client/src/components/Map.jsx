@@ -1014,7 +1014,7 @@ secretData[998],
 secretData[999]
       ]}
       center={{lat: userLat, lng: userLng}}
-      zoom={14}
+      zoom={12}
       onLoaded={(googleMaps, map) => {
         map.setMapTypeId(googleMaps.MapTypeId.ROADMAP)
       }}

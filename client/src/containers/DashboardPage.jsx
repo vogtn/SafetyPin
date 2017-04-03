@@ -49,11 +49,11 @@ class DashboardPage extends React.Component {
                   const infoWindow = new googleMaps.InfoWindow({
                     content: `
                       <div>
-                        <h3>`+ element.hundred_block_location +`<h3>
-                        <small>` +
+                        <h6 id='blockLocation'>`+ element.hundred_block_location +`<h6>
+                        <p id='offense'>` +
                           element.offense_type
                           +
-                        `</small>
+                        `</p>
                       </div>
                     `,
                   })
@@ -65,6 +65,7 @@ class DashboardPage extends React.Component {
                 },
               }
           )
+          
         })
         console.log(newData);
         this.setState({
@@ -93,7 +94,7 @@ class DashboardPage extends React.Component {
     return (
       <div>
         {console.log(this.state.secretData.length)}
-            {(this.state.secretData.length === 0) ? <div>loading...</div> : <Map secretData={this.state.secretData} userLat={this.state.userLat} userLng={this.state.userLng}/> }
+            {(this.state.secretData.length === 0) ? <div id='loading' className="loader">Loading...</div> : <Map secretData={this.state.secretData} userLat={this.state.userLat} userLng={this.state.userLng}/> }
       </div>
     );
   }

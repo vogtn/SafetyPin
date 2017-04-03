@@ -6,8 +6,8 @@ import FontAwesome from 'react-fontawesome';
 
 
 const Base = ({ children }) => (
-<div>
-  <div className='navbar-fixed z-depth-5'>
+<div id='homeDiv'>
+  <div className='navbar-fixed z-depth-1'>
     <nav>
       <div className="nav-wrapper white">
         {Auth.isUserAuthenticated() ? (
@@ -22,12 +22,7 @@ const Base = ({ children }) => (
         )}
         <div className="brand-logo center">
           <IndexLink to="/">
-            <FlatButton className='pulse' labelStyle={{ fontSize: '30px' }} label='Safety Pin' secondary={true}/>
-          <FontAwesome
-            className='pin'
-            name='map-pin'
-            size='2x'
-          />
+            <FlatButton  id='safe' labelStyle={{ fontSize: '40px', color:'red', fontFamily: 'Fjalla One' }}  label='Safety Pin' secondary={true}/>
           </IndexLink>
         </div>
         <div>
@@ -36,12 +31,6 @@ const Base = ({ children }) => (
     {children}
     </nav>
   </div>
-      <div className="footer-copyright footer">
-        <div className="container">
-        <a className="grey-text center" href="#!">Made with &hearts; by Nic, Mark, & Jack</a>
-        <a className="grey-text right" href="#!">© 2017 Copyright</a>
-        </div>
-      </div>
 </div>
 );
 
