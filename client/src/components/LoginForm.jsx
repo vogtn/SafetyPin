@@ -12,9 +12,10 @@ const LoginForm = ({
   successMessage,
   user
 }) => (
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
+<div>
+  <Card className="container center">
+    <form id='loginForm' action="/" onSubmit={onSubmit}>
+      <h3 className="card-heading">Login</h3>
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
@@ -26,6 +27,7 @@ const LoginForm = ({
           errorText={errors.email}
           onChange={onChange}
           value={user.email}
+          underlineStyle={{display: 'none'}}
         />
       </div>
 
@@ -37,16 +39,18 @@ const LoginForm = ({
           onChange={onChange}
           errorText={errors.password}
           value={user.password}
+          underlineStyle={{display: 'none'}}
         />
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <button className="waves-effect waves-light black btn">Login</button>
       </div>
 
-      <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
+      <CardText>Don't have an account? <Link style={{color:'red'}} to={'/signup'}>Create one</Link>.</CardText>
     </form>
   </Card>
+</div>
 );
 
 LoginForm.propTypes = {

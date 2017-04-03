@@ -12,9 +12,9 @@ const SignUpForm = ({
   user,
 }) => (
 <div>
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+  <Card className="container center">
+    <form id='signupForm' action="/" onSubmit={onSubmit}>
+      <h3 className="card-heading">Sign Up</h3>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
@@ -25,6 +25,7 @@ const SignUpForm = ({
           errorText={errors.name}
           onChange={onChange}
           value={user.name}
+          underlineStyle={{display: 'none'}}
         />
       </div>
 
@@ -35,6 +36,7 @@ const SignUpForm = ({
           errorText={errors.email}
           onChange={onChange}
           value={user.email}
+          underlineStyle={{display: 'none'}}
         />
       </div>
 
@@ -46,14 +48,15 @@ const SignUpForm = ({
           onChange={onChange}
           errorText={errors.password}
           value={user.password}
+          underlineStyle={{display: 'none'}}
         />
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <button className="waves-effect waves-light black btn">Sign Up</button>
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
+      <CardText>Already have an account? <Link style={{color:'red'}} to={'/login'}>Log in</Link></CardText>
     </form>
   </Card>
 
