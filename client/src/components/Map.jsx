@@ -12,6 +12,65 @@ const Map = ({googleMaps, secretData, userLng, userLat}) => (
     <GoogleMap
       googleMaps={googleMaps}
       coordinates={[
+      	{
+                title: 'Jackyson',
+                position: {
+                  lat: 47.6074,
+                  lng: -122.3430,
+                },
+                onLoaded: (googleMaps, map, marker) => {
+                  // Set Marker animation
+                  marker.setAnimation(googleMaps.Animation.DROP)
+
+                  // Define Marker InfoWindow
+                  const infoWindow = new googleMaps.InfoWindow({
+                    content: `
+                      <div>
+                        <h6 id='blockLocation'>`+ '1483 Alaskan Way, Seattle, WA 98101' +`<h6>
+                        <p id='offense'>` +
+                          'JACKSON-DUHON--TOUCHING FISH INNAPPROPRIATELY'
+                          +
+                        `</p>
+                      </div>
+                    `,
+                  })
+
+                  // Open InfoWindow when Marker will be clicked
+                  googleMaps.event.addListener(marker, "click", () => {
+                    infoWindow.open(map, marker)
+                  })
+                },
+              },      	{
+                title: 'Denise',
+                position: {
+                  lat: 47.6062,
+                  lng: -122.3425,
+                },
+                onLoaded: (googleMaps, map, marker) => {
+                  // Set Marker animation
+                  marker.setAnimation(googleMaps.Animation.DROP)
+
+                  // Define Marker InfoWindow
+                  const infoWindow = new googleMaps.InfoWindow({
+                    content: `
+                      <div>
+                        <h6 id='blockLocation'>`+ '1301 Alaskan Way Seattle, WA 98101' +`<h6>
+                        <p id='offense'>` +
+                          'DENISE--INNAPPROPRIATE DANCING'
+                          +
+                        `</p>
+                      </div>
+                    `,
+                  })
+
+                  // Open InfoWindow when Marker will be clicked
+                  googleMaps.event.addListener(marker, "click", () => {
+                    infoWindow.open(map, marker)
+                  })
+                },
+              },
+
+      	              
 secretData[0],
 secretData[1],
 secretData[2],

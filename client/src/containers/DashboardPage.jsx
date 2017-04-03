@@ -65,7 +65,7 @@ class DashboardPage extends React.Component {
                 },
               }
           )
-          
+
         })
         console.log(newData);
         this.setState({
