@@ -1,2 +1,5 @@
 # SafetyPin
-Provides users with crime data based on location for seattle
+
+Demo: https://safepin.herokuapp.com/
+
+Visually provides users with crime data based on location, for the Seattle area. 
