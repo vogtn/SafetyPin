@@ -106,3 +106,10 @@ var newData = data.map(element =>{
 ### Wireframes
 
 ![Figure 1-1](http://res.cloudinary.com/dy6bqhnor/image/upload/v1492192166/Screen_Shot_2017-04-14_at_10.47.36_AM_ijlvy1.png "Figure 1-1")
+
+### Future Additions
+
+* Further seperation of component logic
+* Finding more crime data points
+* Adding route path
+* Displaying data points in a heat map
